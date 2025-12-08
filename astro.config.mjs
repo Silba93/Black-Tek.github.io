@@ -8,8 +8,8 @@ export default defineConfig({
 		starlight({
 			title: 'BlackTek',
 			logo: {
-				light: '/src/assets/blacktek.png',
-				dark: '/src/assets/blacktek.png',
+				light: '/src/assets/BlackTek.png',
+				dark: '/src/assets/BlackTek.png',
 				replacesTitle: false,
 			},
 			social: {
