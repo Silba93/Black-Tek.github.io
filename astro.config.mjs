@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://github.com/Black-Tek/Black-Tek.github.io',
 	integrations: [
 		starlight({
 			title: 'BlackTek',
