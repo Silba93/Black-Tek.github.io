@@ -70,7 +70,7 @@ pzLocked = 60000
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `ip` | string | `"127.0.0.1"` | Server IP address |
-| `bindOnlyGlobalAddress` | boolean | `false` | Bind only to global address |
+| `bindOnlyGlobalAddress` | boolean | `false` | Enable to use your globally accessible ip address |
 | `loginProtocolPort` | number | `7171` | Login server port |
 | `gameProtocolPort` | number | `7172` | Game server port |
 | `statusProtocolPort` | number | `7171` | Status protocol port |
@@ -82,7 +82,6 @@ pzLocked = 60000
 | `statusTimeout` | number | `5000` | Status query timeout (ms) |
 | `replaceKickOnLogin` | boolean | `true` | Kick existing session on login |
 | `maxPacketsPerSecond` | number | `25` | Maximum network packets per second |
-| `enableTwoFactorAuth` | boolean | `true` | Enable two-factor authentication |
 
 ### Example
 
@@ -212,8 +211,8 @@ maxMarketOffersAtATimePerPlayer = 100
 | `allowChangeOutfit` | boolean | `true` | Allow players to change outfits |
 | `freePremium` | boolean | `false` | All accounts have premium |
 | `kickIdlePlayerAfterMinutes` | number | `15` | Kick idle players after X minutes |
-| `maxMessageBuffer` | number | `4` | Maximum message buffer size |
-| `emoteSpells` | boolean | `false` | Allow casting spells with emotes |
+| `maxMessageBuffer` | number | `4` | Maximum messages a player can send before becoming muted |
+| `emoteSpells` | boolean | `false` | Spell words show as orange text and not in default chat |
 | `classicEquipmentSlots` | boolean | `true` | Use classic equipment slot system |
 | `classicAttackSpeed` | boolean | `false` | Constant attack speed regardless of actions |
 | `showScriptsLogInConsole` | boolean | `false` | Show script logs in console |
@@ -257,14 +256,6 @@ depotPremiumLimit = 15000
 
 ---
 
-## Quest Tracker
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `questTrackerFreeLimit` | number | `10` | Quest tracker limit for free accounts |
-| `questTrackerPremiumLimit` | number | `15` | Quest tracker limit for premium accounts |
-
----
 
 ## World Light
 
@@ -361,7 +352,7 @@ rateSpawn = 1
 | `deSpawnRadius` | number | `50` | Tiles from spawn before despawn |
 | `removeOnDespawn` | boolean | `true` | Remove monster on despawn (vs teleport back) |
 | `walkToSpawnRadius` | number | `15` | Distance monster walks back to spawn |
-| `monsterOverspawn` | boolean | `false` | Start respawn when out of bounds |
+| `monsterOverspawn` | boolean | `false` | Allows a respawn to occur when a monster exits it's spawn zone |
 
 ### Example
 
@@ -451,17 +442,19 @@ These options provide additional server customization:
 | Option | Default | Description |
 |--------|---------|-------------|
 | `bedOfflineTraining` | `true` | Enable bed offline training |
-| `augmentSlotProtection` | `true` | Protect augment slots |
-| `augmentStaminInMinutes` | `false` | Use minutes for augment stamina |
+| `augmentSlotProtection` | `true` | Enable this to restrict augments applying to equipment in appropriate inventory slot |
+| `augmentStaminInMinutes` | `false` | Enable this have stamina gains from augments measured in minutes rather than seconds |
 | `showAnimationOnCritHitFromAugment` | `true` | Show critical hit animation from augments |
 | `allowNpcWalkthroughInPz` | `false` | Allow NPCs to walk through players in PZ |
 | `healthRegenNotification` | `false` | Show health regeneration messages |
 | `manaRegenNotification` | `false` | Show mana regeneration messages |
-| `autoOpenContainers` | `true` | Auto-open containers when received |
+| `autoOpenContainers` | `true` | Re-open containers upon login, based on order opened from previous session |
 
 ---
 
-## Reward System
+## Boss Reward System
+
+These rates are used to determine how much a player's actions in a boss fight, earns them contribution.
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
@@ -483,7 +476,7 @@ These options provide additional server customization:
 
 ---
 
-## Complete Example Configuration
+## Example Configuration Data
 
 ```lua
 -- config.lua
@@ -495,15 +488,15 @@ killsToRedSkull = 5
 killsToBlackSkull = 10
 
 -- Connection
-ip = "0.0.0.0"
+ip = "127.0.0.1"
 serverName = "BlackTek Server"
 loginProtocolPort = 7171
 gameProtocolPort = 7172
 maxPlayers = 500
 
 -- Map
-mapName = "world"
-mapAuthor = "Admin"
+mapName = "forgotten"
+mapAuthor = "komic"
 
 -- Rates
 rateExp = 10
