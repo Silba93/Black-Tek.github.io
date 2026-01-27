@@ -1,5 +1,5 @@
 ---
-title: Constants (Global)
+title: Constants
 ---
 
 # Lua Constants Reference
