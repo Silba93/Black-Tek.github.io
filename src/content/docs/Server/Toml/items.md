@@ -56,8 +56,6 @@ protection_physical = 5
 speed = 20
 healthgain = 5
 managain = 3
-protection_physical = 10
-protection_fire = 15
 skill_sword = 3
 stats_maxhitpoints = 100
 ```
